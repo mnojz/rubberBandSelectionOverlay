@@ -40,13 +40,13 @@ PanelWindow {
     IpcHandler {
         target: "dragOverlay"
 
-        function start(x: real, y: real) {
+        function start(x: real, y: real): void {
             root.startPosition = Qt.point(x, y)
             root.selectionRect = Qt.rect(x, y, 0, 0)
             root.dragging = true
         }
 
-        function update(x: real, y: real) {
+        function update(x: real, y: real): void {
             if (!root.dragging)
                 return
 
@@ -60,7 +60,7 @@ PanelWindow {
             )
         }
 
-        function stop() {
+        function stop(): void {
             root.dragging = false
         }
     }

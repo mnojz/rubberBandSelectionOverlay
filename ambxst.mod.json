@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/Axenide/Ambxst/dev/docs/mods/manifest.schema.json",
   "manifestVersion": 1,
-  "id": "mnojz.dragoverlay",
+  "id": "com.manoj.rubberbandselectionoverlay",
   "name": "Rubber Band Selection Overlay",
   "version": "0.0.1",
   "author": "Manoj Joshi",

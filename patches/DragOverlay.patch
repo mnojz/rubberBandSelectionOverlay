@@ -1,26 +1,32 @@
+diff --git a/shell.qml b/shell.qml
+index 888996d..dbf0149 100644
 --- a/shell.qml
 +++ b/shell.qml
-@@ -10,6 +10,7 @@
+@@ -6,6 +6,7 @@
+ import QtQuick
  import Quickshell
  import Quickshell.Wayland
 +import "./mods/com.manoj.rubberbandselectionoverlay/payload"
-
- ShellRoot {
-     id: root
-@@ -100,6 +101,17 @@
-         // ... existing shell code ...
+ import qs.modules.bar
+ import qs.modules.bar.workspaces
+ import qs.modules.notifications
+@@ -62,6 +63,19 @@ ShellRoot {
+         }
+     }
+ 
++    Variants {
++        model: Quickshell.screens
 +
-+        // Drag terminal selection overlay
-+        Variants {
-+            model: Quickshell.screens
-+
-+            Loader {
-+                id: dragOverlayLoader
-+                active: true
-+                required property ShellScreen modelData
-+
-+                sourceComponent: DragOverlay {
-+                    targetScreen: dragOverlayLoader.modelData
-+                }
++        Loader {
++            id: dragOverlayLoader
++            active: true
++            required property ShellScreen modelData
++            sourceComponent: DragOverlay {
++                targetScreen: dragOverlayLoader.modelData
 +            }
 +        }
++    }
++
+     // Visual panel & reservations
+     Variants {
+         model: Quickshell.screens
