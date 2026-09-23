@@ -1,0 +1,26 @@
+--- a/shell.qml
++++ b/shell.qml
+@@ -10,6 +10,7 @@
+ import Quickshell
+ import Quickshell.Wayland
++import "./mods/com.manoj.rubberbandselectionoverlay/payload"
+
+ ShellRoot {
+     id: root
+@@ -100,6 +101,17 @@
+         // ... existing shell code ...
++
++        // Drag terminal selection overlay
++        Variants {
++            model: Quickshell.screens
++
++            Loader {
++                id: dragOverlayLoader
++                active: true
++                required property ShellScreen modelData
++
++                sourceComponent: DragOverlay {
++                    targetScreen: dragOverlayLoader.modelData
++                }
++            }
++        }

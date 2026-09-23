@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Axenide/Ambxst/dev/docs/mods/manifest.schema.json",
+  "manifestVersion": 1,
+  "id": "com.manoj.rubberbandselectionoverlay",
+  "name": "Rubber Band Selection Overlay",
+  "version": "0.0.1",
+  "author": "Manoj Joshi",
+  "description": "Ambxst mod for creating a rubber band selection overlay for spawning terminals over the desktop",
+  "compatibility": {
+    "api": 1,
+    "ambxst": ">=1.3.0 <2.0.0"
+  },
+  "settings": "settings.json",
+  "operations": [
+    {
+      "type": "patch",
+      "source": "patches/dragOverlay.patch"
+    }
+  ]
+}
