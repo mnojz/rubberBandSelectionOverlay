@@ -75,7 +75,7 @@ PanelWindow {
 
     Rectangle {
         x: root.selectionRect.x
-        y: root.selectionRect.y
+        y: root.selectionRect.y - 40
         width: root.selectionRect.width
         height: root.selectionRect.height
 
