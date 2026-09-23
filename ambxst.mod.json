@@ -13,7 +13,7 @@
   "operations": [
     {
       "type": "patch",
-      "source": "patches/dragOverlay.patch"
+      "source": "patches/DragOverlay.patch"
     }
   ]
 }
