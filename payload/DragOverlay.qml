@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import qs.modules.services
 
 PanelWindow {
     id: root
@@ -12,6 +13,52 @@ PanelWindow {
     property bool dragging: false
     property point startPosition: Qt.point(0, 0)
     property rect selectionRect: Qt.rect(0, 0, 0, 0)
+
+    readonly property string modId: "mnojz.dragoverlay"
+
+    // Visual settings, editable on the mod's Settings page.
+    // Defaults mirror the fallback values declared in settings.json.
+    property string overlayBgColor: "#445b93d3"
+    property string overlayBorderColor: "#adaac7fc"
+    property int overlayBorderWidth: 2
+
+    function applyValues(values) {
+        if (values === undefined || values === null)
+            return
+        if (values.overlayBgColor !== undefined)
+            root.overlayBgColor = values.overlayBgColor
+        if (values.overlayBorderColor !== undefined)
+            root.overlayBorderColor = values.overlayBorderColor
+        if (values.overlayBorderWidth !== undefined) {
+            const width = parseInt(values.overlayBorderWidth, 10)
+            if (Number.isFinite(width))
+                root.overlayBorderWidth = width
+        }
+    }
+
+    function loadSettings() {
+        if (typeof ModsService === "undefined" || typeof ModsService.getSettings !== "function")
+            return
+        ModsService.getSettings(root.modId, (settings, error) => {
+            if (error || !settings)
+                return
+            root.applyValues(settings.values)
+        })
+    }
+
+    Component.onCompleted: root.loadSettings()
+
+    Connections {
+        target: ModsService
+
+        function onSettingChanged(modId, key, value) {
+            if (modId !== root.modId)
+                return
+            const values = {}
+            values[key] = value
+            root.applyValues(values)
+        }
+    }
 
     anchors {
         top: true
@@ -32,9 +79,9 @@ PanelWindow {
         width: root.selectionRect.width
         height: root.selectionRect.height
 
-        color: "#445b93d3"
-        border.width: 2
-        border.color: "#adaac7fc"
+        color: root.overlayBgColor
+        border.width: root.overlayBorderWidth
+        border.color: root.overlayBorderColor
     }
 
     IpcHandler {
