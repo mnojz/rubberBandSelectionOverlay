@@ -2,7 +2,6 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
-import qs.modules.config
 
 PanelWindow {
     id: root
@@ -18,7 +17,7 @@ PanelWindow {
         top: true
         bottom: true
         left: true
-        right: right
+        right: true
     }
 
     color: "transparent"
@@ -29,14 +28,13 @@ PanelWindow {
 
     Rectangle {
         x: root.selectionRect.x
-        y: root.selectionRect.y - 40
+        y: root.selectionRect.y
         width: root.selectionRect.width
         height: root.selectionRect.height
 
-        // Binds dynamically to Ambxst Config or fallback values
-        color: Config.mods["com.manoj.rubberbandselectionoverlay"]?.overlayBgColor ?? "#445b93d3"
-        border.width: Config.mods["com.manoj.rubberbandselectionoverlay"]?.overlayBorderWidth ?? 2
-        border.color: Config.mods["com.manoj.rubberbandselectionoverlay"]?.overlayBorderColor ?? "#adaac7fc"
+        color: "#445b93d3"
+        border.width: 2
+        border.color: "#adaac7fc"
     }
 
     IpcHandler {
