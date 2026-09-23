@@ -12,6 +12,11 @@
   },
   "operations": [
     {
+      "type": "overlay",
+      "source": "payload/DragOverlay.qml",
+      "target": "mods/com.manoj.rubberbandselectionoverlay/payload/DragOverlay.qml"
+    },
+    {
       "type": "patch",
       "source": "patches/DragOverlay.patch"
     }
