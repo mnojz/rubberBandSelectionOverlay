@@ -3,7 +3,7 @@
   "manifestVersion": 1,
   "id": "mnojz.dragoverlay",
   "name": "Rubber Band Selection Overlay",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Manoj Joshi",
   "description": "Ambxst mod for creating a rubber band selection overlay for spawning terminals over the desktop",
   "compatibility": {
@@ -22,10 +22,6 @@
     {
       "type": "patch",
       "source": "patches/DragOverlay.patch"
-    },
-    {
-      "type": "patch",
-      "source": "patches/ModsColorPicker.patch"
     }
   ]
 }
